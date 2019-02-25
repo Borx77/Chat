@@ -9,6 +9,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: () => import('./views/List.vue')
+    },
+    {
+      path: '/chat:emisor/:receptor',
+      name: 'chat',
+      component: () => import('./views/Chat.vue')
     }
   ]
 })
