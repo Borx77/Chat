@@ -10,7 +10,9 @@
       </div>
     </div>
     <div class="fondo flex flex-col justify-center" v-for="usuario in usuarios" :key="usuario.id">
-      <router-link :to="{name: 'chat', params: {emisor: yo, receptor: usuario.id }}">
+      <router-link
+        :to="{name: 'chat', params: {emisor: $route.params.emisor, receptor: usuario.id }}"
+      >
         <div class="bg-white m-4 mx-8 p-2 w-5/6 flex flex-row rounded">
           <div class="w-1/6 flex justify-center">
             <img
@@ -44,8 +46,7 @@ export default {
   data: function() {
     return {
       usuarios: [],
-      loading: true,
-      yo: "recaXeb8GcFdhNos"
+      loading: true
     };
   },
   mounted: function() {
