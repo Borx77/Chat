@@ -1,7 +1,10 @@
 <template>
-  <div class="list">
-    <div class="w-full bg-grey-dark py-6">
-      <h1 class="text-center text-white">Chat de Amigos</h1>
+  <div class="list fuente">
+    <div class="w-full fondo py-6 flex">
+      <router-link :to="{name: 'login'}" class>
+        <i class="fas fa-undo-alt pt-3 pl-2"></i>
+      </router-link>
+      <h1 class="text-center text-black pl-12">Chat de Amigos</h1>
     </div>
     <div class="bg-white-light w-full flex justify-center">
       <div class="w-5/6 bg-grey-light m-3 p-4 text-center rounded-lg">
@@ -13,18 +16,18 @@
       <router-link
         :to="{name: 'chat', params: {emisor: $route.params.emisor, receptor: usuario.id }}"
       >
-        <div class="bg-white m-4 mx-8 p-2 w-5/6 flex flex-row rounded">
+        <div class="bg-white m-4 mx-6 p-2 w-5/6 flex flex-row rounded">
           <div class="w-1/6 flex justify-center">
             <img
-              class="block h-16 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0"
+              class="block h-10 sm:h-24 rounded-full mx-auto mb-4 sm:mb-0 sm:mr-4 sm:ml-0"
               src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4"
               alt
             >
           </div>
-          <div class="w-3/4 mt-4 ml-3">
-            <h3>{{usuario.fields.Username}}</h3>
+          <div class="w-3/4 mt-2 ml-3">
+            <h3 class="tamanyo-titulo">{{usuario.fields.Username}}</h3>
             <p
-              class="mt-3 text-xs"
+              class="mt-1 tamanyo-letra"
             >Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, porro!</p>
           </div>
           <div class="flex justify-center items-center">
@@ -90,7 +93,16 @@ export default {
 }
 
 .tamanyo {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+}
+.tamanyo-titulo {
+  font-size: 1rem;
+}
+.tamanyo-letra {
+  font-size: 0.6rem;
+}
+.fuente {
+  font-family: "PT Sans Narrow", sans-serif;
 }
 </style>
 

@@ -1,18 +1,26 @@
 <template>
-  <div class="chat">
-    <h2 class="text-center">Chat</h2>
-    <div class="bg-green-dark w-full border border-white">
+  <div class="chat fuente">
+    <h2 class="text-center my-2">Chat</h2>
+    <div class="bg-green-dark w-full pb-5">
+      <router-link :to="{ name: 'list' }">
+        <i class="fas fa-caret-square-left tamanyo"></i>
+      </router-link>
       <h2 class="text-center">{{ receptorUsername }}</h2>
     </div>
-    <div class="bg-grey w-full mt-3">
-      <p v-for="mensaje in mensajes" :key="mensaje.id">
+    <div
+      class="bg-grey-light w-2/3 mt-3 p-3 rounded"
+      v-for="mensaje in mensajes"
+      :key="mensaje.id"
+      :class="{'ml-4': mensaje.fields.Receptor == $route.params.receptor, 'margin-chat': mensaje.fields.Receptor != $route.params.receptor}"
+    >
+      <p>
         <span
-          :class="{'text-green': mensaje.fields.Receptor == $route.params.receptor, 'text-red': mensaje.fields.Receptor != $route.params.receptor}"
+          :class="{'text-black': mensaje.fields.Receptor == $route.params.receptor, 'text-black': mensaje.fields.Receptor != $route.params.receptor}"
         >{{ mensaje.fields.Texto }}</span>
       </p>
     </div>
-    <div class="mt-3 fixed fixed pin-b pin-l p-5">
-      <input type="text" class="border border-black" v-model="textoNuevoMensaje">
+    <div class="mt-3 fixed fixed pin-b pin-l p-5 w-full">
+      <input type="text" class="border border-black tamanyo-input" v-model="textoNuevoMensaje">
       <button @click.prevent="nuevoMensajeapi" class="p-2 bg-green ml-2">Enviar</button>
     </div>
   </div>
@@ -140,5 +148,17 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.tamanyo {
+  font-size: 1.5rem;
+}
+.tamanyo-input {
+  width: 13rem;
+}
+.fuente {
+  font-family: "PT Sans Narrow", sans-serif;
+}
+.margin-chat {
+  margin-left: 5.6rem;
+}
 </style>
 
