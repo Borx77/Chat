@@ -1,19 +1,21 @@
 <template>
   <div class="list fuente">
+    <Loading v-if="loading"></Loading>
     <div class="w-full fondo py-6 flex">
       <router-link :to="{name: 'login'}" class>
-        <i class="fas fa-undo-alt pt-3 pl-2"></i>
+        <i class="fas fa-undo-alt pt-3 pl-2 text-white"></i>
       </router-link>
-      <h1 class="text-center text-black pl-12">Chat de Amigos</h1>
+      <h1 class="text-center text-black pl-16">Chat de Amigos</h1>
     </div>
     <div class="bg-white-light w-full flex justify-center">
-      <div class="w-5/6 bg-grey-light m-3 p-4 text-center rounded-lg">
+      <div class="w-5/6 bg-grey-light m-3 p-3 text-center rounded-lg">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Buscar" class="w-2/3 h-6 ml-4 rounded">
+        <input type="text" placeholder="Buscar" class="w-2/3 h-6 ml-4 rounded pl-2">
       </div>
     </div>
     <div class="fondo flex flex-col justify-center" v-for="usuario in usuarios" :key="usuario.id">
       <router-link
+        class="no-underline text-black"
         :to="{name: 'chat', params: {emisor: $route.params.emisor, receptor: usuario.id }}"
       >
         <div class="bg-white m-4 mx-6 p-2 w-5/6 flex flex-row rounded">
@@ -41,11 +43,13 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "list",
-  components: {},
+  components: {
+    Loading
+  },
   data: function() {
     return {
       usuarios: [],
@@ -94,6 +98,7 @@ export default {
 
 .tamanyo {
   font-size: 1.5rem;
+  margin-left: 5px;
 }
 .tamanyo-titulo {
   font-size: 1rem;
