@@ -27,7 +27,12 @@
       </div>
     </div>
     <div class="mt-3 fixed fixed pin-b pin-l p-5 w-full">
-      <input type="text" class="border border-black tamanyo-input" v-model="textoNuevoMensaje">
+      <input
+        type="text"
+        class="border border-black tamanyo-input"
+        v-model="textoNuevoMensaje"
+        @keyup.enter="nuevoMensajeapi"
+      >
       <button @click.prevent="nuevoMensajeapi" class="p-2 bg-green ml-2">Enviar</button>
     </div>
   </div>
